@@ -1,0 +1,36 @@
+{
+  "summary": "Full backend + frontend regression for SilentCX MVP. Backend pytest suite: 40/40 passing (public catalog/CMS, all 5 demo logins, role-based auth, client entitlements for essential/insight/performance, protected report access + cross-client forbidden, pay-invoice persistence, register+9-step onboarding, shopper home/assignment, admin dashboard + all resource lists + CMS publish reflected on public /api/cms + package edit + addon toggle + application action + project publish). Frontend Playwright: landing hero+3 packages+FAQ OK, all demo logins redirect to correct dashboards (admin->/admin, client->/app, shopper->/shopper), performance client sidebar shows Benchmark/Re-Audit/Consultation but NOT Competitor, insight shows Competitor only, essential shows none of the four gated modules, PRJ-1003 report renders all Executive/Category/Journey/SOP/Findings/Recommendations/Management sections, jsPDF client-side download of SilentCX_Report_AUD-1003.pdf triggered successfully with no console errors, admin cockpit + Applications + CMS pages render. Shopper submit endpoint reachable and clickable.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Login page demo buttons", "issue": "All three client demo buttons share the same data-testid='demo-client-button' because label.split(' ')[0]='Client' for Essential/Insight/Performance. Duplicate testids break precise Playwright targeting; use quick-demo buttons collide. Recommend deriving testid from email/package key (e.g. demo-essential-button/demo-insight-button/demo-performance-button).", "selector": "[data-testid='demo-client-button']", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "(Optional/LOW) Give each demo-login chip a unique data-testid derived from the package key rather than the first word of the label; currently 3 chips collide on data-testid='demo-client-button'."
+  ],
+  "critical_code_review_comments": [
+    "server.py is 634 lines and holds every route + seeding + models. Consider splitting into routers/ (auth, client, shopper, admin, catalog) plus a seed module for maintainability.",
+    "/api/auth/logout is a no-op stateless endpoint; if httpOnly cookie support is intended it should clear the cookie. Currently JWT lives only in localStorage which is acceptable but should be explicit.",
+    "GET /api/admin/{collection} is a very broad open-mapping route ordered AFTER /api/admin/dashboard which is fine, but it will shadow any future /api/admin/<literal> route added below it — worth documenting or converting to explicit routes.",
+    "POST /api/invoices/{invoice_id}/pay has no ownership check — any authenticated user (admin/shopper/other client) could mark another client's invoice as paid. Add client_id ownership check.",
+    "resolve_entitlements uses set() (unordered) then returns sorted list — fine, but tests must not rely on order.",
+    "Frontend Login demo-testid derivation via label.split(' ')[0] produces collisions for Client tier chips."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py"
+  ],
+  "success_rate": {"backend": "100% (40/40)", "frontend": "100% of critical flows"},
+  "test_credentials": "All demo accounts / password demo123 (admin@silentcx.demo, essential@, insight@, performance@, shopper@silentcx.demo)",
+  "seed_data_creation": "Test created TEST_* client via /api/auth/register + /api/onboarding (Insight + competitor_benchmark) which produced a new PRJ-100x + INV-100x. Safe to leave; TEST-prefixed only.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend pytest suite at /app/backend/tests/backend_test.py (pytest-xdist parallel, 40 tests, ~13s). Frontend flows verified via Playwright: entitlement-gated sidebar per package (performance -> Benchmark/Re-Audit/Consultation, insight -> Competitor only, essential -> none), PDF download works via [data-testid=report-download-pdf-button] and jsPDF triggers an actual browser download of SilentCX_Report_AUD-1003.pdf. Login demo chips have duplicate testids for the 3 client tiers — target by email input instead. Ownership hole on invoice pay endpoint noted.",
+  "rca of the issue": "N/A — no blocking issues found. Only observation: entitlement key for re-audit is 're_audit_comparison' (add-on key 're_audit' maps to 're_audit_comparison' flag via entitlements.ADDON_ENTITLEMENTS). Frontend sidebar correctly uses 're_audit_comparison'."
+}

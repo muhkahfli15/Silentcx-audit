@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sx-void: #06080C;
+  --sx-charcoal: #0D1117;
+  --sx-surface: #151B23;
+  --sx-surface-2: #1A2230;
+  --sx-border: #212836;
+  --sx-gold: #E5A93C;
+  --sx-gold-deep: #B87E1D;
+  --sx-gold-light: #FBE6B5;
+}
+
+* { border-color: var(--sx-border); }
+
+html, body {
+  margin: 0;
+  background: var(--sx-void);
+  color: #E5E9F0;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-head { font-family: "Sora", system-ui, sans-serif; }
+.font-mono, code { font-family: "JetBrains Mono", monospace; }
+
+::selection { background: rgba(229,169,60,0.3); color: #fff; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--sx-void); }
+::-webkit-scrollbar-thumb { background: #232b3a; border-radius: 8px; border: 2px solid var(--sx-void); }
+::-webkit-scrollbar-thumb:hover { background: #2f3a4d; }
+
+@layer components {
+  .sx-card {
+    @apply bg-[#0D1117] border border-[#212836] rounded-xl;
+  }
+  .sx-card-hover {
+    @apply transition-colors hover:border-[#E5A93C]/40;
+  }
+  .sx-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-semibold text-sm px-4 py-2.5 transition-all disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap;
+  }
+  .sx-btn-primary {
+    @apply sx-btn bg-[#E5A93C] text-[#06080C] hover:bg-[#D4982B] shadow-[0_2px_14px_rgba(229,169,60,0.25)];
+  }
+  .sx-btn-secondary {
+    @apply sx-btn bg-[#151B23] text-slate-100 border border-[#212836] hover:bg-[#1F2734];
+  }
+  .sx-btn-outline {
+    @apply sx-btn border border-[#E5A93C]/40 text-[#E5A93C] hover:bg-[#E5A93C]/10;
+  }
+  .sx-btn-ghost {
+    @apply sx-btn text-slate-400 hover:text-slate-100 hover:bg-slate-800/40;
+  }
+  .sx-input {
+    @apply w-full bg-[#0B0F17] border border-[#212836] rounded-lg px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 outline-none transition-colors focus:border-[#E5A93C]/60 focus:ring-1 focus:ring-[#E5A93C]/30;
+  }
+  .sx-label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5;
+  }
+  .sx-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-[#E5A93C];
+  }
+  .sx-chip {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border;
+  }
+}
+
+@keyframes sx-fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.sx-fade-up { animation: sx-fade-up 0.5s ease both; }
+
+.sx-grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(229,169,60,0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+}

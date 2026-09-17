@@ -1,0 +1,40 @@
+{
+  "summary": "Full backend + frontend test of the 4 new SilentCX features (Questionnaire Builder, Evidence Uploads, Notifications+Email Log, Consultation Scheduler) plus regression. Backend pytest: 55/55 passing across /app/backend/tests (40 original regression + 15 new-feature tests). Backend covered: QN CRUD (create/update/reorder-numbering/duplicate/delete + 400 when referenced by active assignment), shopper questionnaire resolution (assignment.questionnaire_id -> that QN, else fallback qn_fnb), multipart evidence upload (returns provider:'local', /api/uploads/... url; static endpoint serves file with PNG magic bytes; rejects non-image/pdf 400; rejects >10MB 400), QC 'revision' action (shopper receives 'Revision Requested' notification + subject appears in db.email_log via /api/admin/integrations/google), report_published (client notification 'Report Published' + email log), consultation slots (8 weekday slots 09-17 WIB, weekend all available=false), book (performance client scheduled provider=internal), collision 409, essential client 403, cancel sets status=cancelled, /api/admin/notifications, /api/admin/integrations/google (configured true, connected false), /connect returns authorization_url containing accounts.google.com. Frontend Playwright: /admin/questionnaires create -> editor opens, name/pkg/add-question/save/delete happy path OK; /admin/integrations google-connect-button enabled, email-log visible with recent entries (Report Published, Revision Requested, New Submission for QC, Consultation Booking, Consultation Cancelled); admin notifications-button bell opens panel; /admin/consultations renders; performance client /app/consultation date picker + slot-grid (8 buttons) + book + cancel end-to-end succeeds and appears in consultation list; shopper mobile viewport (390x844) login -> asg_1 audit form -> q-q9-upload-input set_input_files uploads 1x1 PNG -> evidence-item rendered with 'Local' badge -> evidence-remove clears it.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_new_features.py",
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_new_features.xml",
+    "/app/test_reports/pytest/pytest_all.xml"
+  ],
+  "action_items": [
+    "(LOW) Duplicate data-testid='demo-client-button' on three client tier quick-demo chips (already reported in iteration_1) — first Playwright attempt using page.get_by_text('Admin') matched the sidebar 'Admin' role text after nav; using email/password inputs works fine.",
+    "(LOW/cleanup) Backend tests leave a few TEST_ artefacts: 2 TEST outlet assignments (AUD-TST*) on PRJ-1003 with the 'TEST_QN_InUse' questionnaire and their revision_required submissions, plus a couple of test-created invoices/projects from the register+onboarding regression. Consider a scripted /admin/cleanup-test-data endpoint or prefix-based teardown for future runs."
+  ],
+  "critical_code_review_comments": [
+    "server.py is now ~920 lines with catalog + auth + client + shopper + admin + questionnaires + integrations + seeding all in one module — extract into routers/ (consultation.py, questionnaire.py, integrations.py, shopper_evidence.py) for maintainability.",
+    "upload_evidence: does not sanitize Path(file.filename).suffix — a shopper could upload 'evidence.exe.png' with a path-traversal-y name. suffix() is safe against '..' but consider a whitelist of extensions to match ALLOWED_MIME.",
+    "shopper_submit accepts arbitrary evidence array from the client without verifying that each item.url actually points to an upload owned by this shopper — a shopper could inject spoofed url values into their submission (only cosmetic since QC reviews visually, but worth locking down).",
+    "delete_questionnaire only blocks on assignments whose status is NOT in [completed, cancelled] — it does not block if a QN is referenced by projects/reports historical assignments. That is likely fine, but note the surviving assignments will 404 when re-fetching questionnaire.",
+    "book_consultation collision check uses exact scheduled_at match rather than overlap; since all slots are on the hour this is fine, but if the granularity ever changes to 30 min this will silently regress. Prefer the same overlap logic used for busy/[$gte,$lt] on all clash checks.",
+    "google_disconnect calls gi.rq.post inside asyncio.to_thread but ignores the response — that is fine, but the same block silently swallows all exceptions which could hide misconfigurations.",
+    "/api/admin/{collection} catch-all is still ordered after /api/admin/dashboard, /api/admin/notifications, /api/admin/integrations/*, /api/admin/questionnaires — the ordering happens to work only because FastAPI keeps registration order; adding a new admin literal route below this line would be silently shadowed. Convert to an explicit mapping or move above.",
+    "Consultation date validation strptime treats YYYY-MM-DD as midnight WIB but never rejects past dates explicitly — slots on a past date just return all available:false (fine but not obvious).",
+    "Frontend Login page still has demo-client-button testid collision (iteration_1 open item)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_new_features.py (new)"
+  ],
+  "success_rate": {"backend": "100% (55/55)", "frontend": "100% of critical flows"},
+  "test_credentials": "All demo accounts / password demo123 (admin@, essential@, insight@, performance@, shopper@silentcx.demo). Loaded from /app/memory/test_credentials.md.",
+  "seed_data_creation": "Tests created and left behind: 1x 'TEST_QN_InUse' questionnaire (~qn_xxxxxx), 2x TEST_outlet assignments on PRJ-1003 (AUD-TST*) plus their submissions in revision_required status. All TEST_-prefixed and safe to sweep. Consultation bookings created during tests were cancelled by the test itself.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend regression suite lives at /app/backend/tests/{backend_test.py,test_new_features.py} — run with `export $(grep -v '^#' /app/frontend/.env | xargs) && pytest /app/backend/tests/ -v` (env var REACT_APP_BACKEND_URL is required by the tests; there is no default). Frontend login: use email+password fields and press Enter on password (the 'Sign In' button has no type=submit and clicking a text-based 'Admin' locator can match the sidebar role label instead of the demo chip). For shopper evidence upload use assignment asg_1 which resolves to qn_fnb (has q9 evidence question) — direct URL /shopper/assignments/asg_1/audit works even when the assignment is in revision_required. Google is NOT connected; all google_calendar/drive calls fall back to internal/local as designed. Consultation slot data-testid pattern is slot-HH (e.g. slot-09).",
+  "rca of the issue": "N/A — all tests green. Two minor code-quality observations noted in critical_code_review_comments: (1) unchecked evidence items in shopper_submit (client can inject arbitrary url/id values, not linked to ownership), (2) admin catch-all list route ordering fragility."
+}

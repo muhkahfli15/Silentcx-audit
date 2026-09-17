@@ -1,0 +1,296 @@
+{
+  "project_name": "SilentCX - Premium Customer Experience Audit Platform",
+  "tagline": "Experience. Evidence. Insight. Improvement.",
+  "brand_identity": {
+    "archetype": "High-End B2B Consulting + CX Intelligence + Operational Audit + Executive SaaS",
+    "theme_mode": "Hybrid (Cinematic Charcoal-Black Marketing + Focused Studio Light & Dark Dashboards with Solid Elevated Surfaces)",
+    "core_aesthetic": "Precision Swiss Typography, Fine 1px Metallic Gold Hairlines, Architectural Balance, High Density Analytics, Zero Detective Clichés",
+    "logo_specifications": {
+      "mark": "Stylized Golden 'S' eye curvature monogram",
+      "wordmark": "Silent [Charcoal/White] + CX [Golden Yellow]",
+      "tagline": "Experience. Evidence. Insight. Improvement.",
+      "dark_surface_logo": {
+        "text_silent": "#F9FAFB",
+        "text_cx": "#E5A93C",
+        "mark_glow": "rgba(229, 169, 60, 0.25)"
+      },
+      "light_surface_logo": {
+        "text_silent": "#0B0F17",
+        "text_cx": "#C98E2A",
+        "mark_glow": "rgba(201, 142, 42, 0.15)"
+      }
+    }
+  },
+  "colors": {
+    "palette": {
+      "charcoal_black": {
+        "obsidian_void": "#06080C",
+        "deep_charcoal": "#0D1117",
+        "surface_elevated": "#151B23",
+        "surface_border": "#212836",
+        "surface_subtle": "#1A2230"
+      },
+      "golden_yellow": {
+        "gold_light": "#FBE6B5",
+        "gold_default": "#E5A93C",
+        "gold_deep": "#B87E1D",
+        "gold_muted": "rgba(229, 169, 60, 0.12)",
+        "gold_border": "rgba(229, 169, 60, 0.35)",
+        "gold_glow": "0 0 24px rgba(229, 169, 60, 0.2)"
+      },
+      "soft_gray_neutrals": {
+        "pure_white": "#FFFFFF",
+        "canvas_light": "#F8FAFC",
+        "surface_light": "#FFFFFF",
+        "border_light": "#E2E8F0",
+        "text_muted": "#64748B",
+        "text_secondary": "#475569",
+        "text_primary": "#0F172A"
+      },
+      "functional_accents": {
+        "info": "#0284C7",
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "destructive": "#EF4444",
+        "purple_benchmark": "#8B5CF6"
+      }
+    },
+    "score_rating_system": {
+      "excellent": {
+        "range": "90 - 100%",
+        "badge_bg": "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
+        "color_hex": "#10B981",
+        "label": "Excellent CX"
+      },
+      "good": {
+        "range": "75 - 89%",
+        "badge_bg": "bg-amber-500/10 text-amber-300 border border-amber-500/30",
+        "color_hex": "#F59E0B",
+        "label": "Good Standard"
+      },
+      "needs_attention": {
+        "range": "60 - 74%",
+        "badge_bg": "bg-orange-500/10 text-orange-400 border border-orange-500/30",
+        "color_hex": "#F97316",
+        "label": "Needs Attention"
+      },
+      "poor": {
+        "range": "40 - 59%",
+        "badge_bg": "bg-rose-500/10 text-rose-400 border border-rose-500/30",
+        "color_hex": "#F43F5E",
+        "label": "Poor Compliance"
+      },
+      "critical": {
+        "range": "0 - 39%",
+        "badge_bg": "bg-red-600/15 text-red-400 border border-red-600/40 font-semibold",
+        "color_hex": "#DC2626",
+        "label": "Critical Breach"
+      }
+    },
+    "severity_rating_system": {
+      "critical": "bg-red-500/10 text-red-400 border border-red-500/40 uppercase tracking-widest text-[11px]",
+      "high": "bg-orange-500/10 text-orange-400 border border-orange-500/30 uppercase tracking-widest text-[11px]",
+      "medium": "bg-amber-500/10 text-amber-300 border border-amber-500/30 uppercase tracking-widest text-[11px]",
+      "low": "bg-slate-500/10 text-slate-300 border border-slate-500/30 uppercase tracking-widest text-[11px]"
+    }
+  },
+  "typography": {
+    "font_family_recommendation": {
+      "headings": "Cabinet Grotesk, Outfit, or Syne for editorial authority (fallback: system-ui, -apple-system, sans-serif with font-black tracking-tight)",
+      "body": "IBM Plex Sans, DM Sans, or Segoe UI with tracking-normal leading-relaxed",
+      "monospaced_metrics": "JetBrains Mono, Roboto Mono, Consolas for audit IDs, timestamps, compliance ratios"
+    },
+    "hierarchy_rules": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "card_title_h3": "text-lg sm:text-xl font-semibold tracking-normal",
+      "widget_sub_h4": "text-sm sm:text-base font-medium",
+      "overline_eyebrow": "text-xs font-semibold uppercase tracking-[0.2em] text-[#E5A93C]",
+      "metric_giant": "text-3xl sm:text-4xl font-bold font-mono tracking-tight",
+      "body_standard": "text-sm sm:text-base text-slate-300 dark:text-slate-300 leading-relaxed",
+      "table_dense": "text-xs sm:text-sm font-medium"
+    }
+  },
+  "spacing_and_layout_system": {
+    "page_containers": {
+      "landing_page": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+      "dashboard_client": "w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-6",
+      "dashboard_admin": "w-full px-4 sm:px-6 lg:px-8 py-6",
+      "shopper_mobile": "max-w-md mx-auto px-4 py-5 pb-24"
+    },
+    "padding_rules": {
+      "card_internal": "p-5 sm:p-6",
+      "table_cell": "py-3.5 px-4",
+      "section_vertical": "py-16 sm:py-24",
+      "button_standard": "px-4 py-2.5 sm:px-5 sm:py-3"
+    }
+  },
+  "surface_strategies": {
+    "landing_nav": "sticky top-0 z-50 backdrop-blur-xl bg-[#06080C]/85 border-b border-[#212836] shadow-sm",
+    "client_dashboard_cards": "bg-[#0D1117] border border-[#212836] rounded-xl hover:border-[#E5A93C]/40 transition-colors shadow-sm",
+    "report_hero_card": "bg-gradient-to-br from-[#151B23] via-[#0D1117] to-[#06080C] border border-[#E5A93C]/30 rounded-2xl p-6 sm:p-8",
+    "shopper_mobile_nav": "fixed bottom-0 inset-x-0 z-50 backdrop-blur-xl bg-[#0D1117]/95 border-t border-[#212836] max-w-md mx-auto",
+    "admin_table_container": "bg-[#0D1117] border border-[#212836] rounded-xl overflow-hidden",
+    "modal_dialog": "bg-[#0D1117] border border-[#212836] text-slate-100 shadow-2xl rounded-2xl"
+  },
+  "image_urls": {
+    "hero_and_industries": [
+      {
+        "category": "f_and_b_restaurant",
+        "description": "High-end luxury restaurant interior with ambient lighting for F&B audit showcase",
+        "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBkaW5pbmclMjByZXN0YXVyYW50JTIwaW50ZXJpb3J8ZW58MHx8fHwxNzg5NTEzOTM3fDA&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "retail_luxury",
+        "description": "Premium boutique retail visual merchandising showcasing store SOP and customer pathing",
+        "url": "https://images.unsplash.com/photo-1526745925052-dd824d27b9ab?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxyZXRhaWwlMjBsdXh1cnklMjBzdG9yZSUyMGludGVyaW9yfGVufDB8fHx8MTc4OTUxMzk0MXww&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "clinic_healthcare",
+        "description": "Modern clinic reception and consultation zone for healthcare audit modules",
+        "url": "https://images.unsplash.com/photo-1608979827489-2b855e79debe?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjbGluaWMlMjByZWNlcHRpb24lMjBpbnRlcmlvcnxlbnwwfHx8fDE3ODkzOTY5NDF8MA&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "dining_ambiance",
+        "description": "Elegantly prepared tables ready for customer journey mystery visit evaluation",
+        "url": "https://images.unsplash.com/photo-1744776411221-702f2848b0b2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBkaW5pbmclMjByZXN0YXVyYW50JTIwaW50ZXJpb3J8ZW58MHx8fHwxNzg5NTEzOTM3fDA&ixlib=rb-4.1.0&q=85"
+      }
+    ]
+  },
+  "modules_and_role_architectures": {
+    "landing_page_marketing": {
+      "sections": [
+        "Header Navigation (Logo, Solutions, Methodology, Packages, Sample Report, Testimonials, FAQ, Portal Login CTA)",
+        "Hero (Tagline badge, Gold-accented H1, Value proposition, Primary CTAs: 'Request Audit Proposal' + 'Explore Sample Report', Stats bar)",
+        "The Problem (CX Blindspots, Brand Inconsistency across multi-outlets, Revenue leakage)",
+        "Methodology (The SilentCX 4-Pillar Framework: Discrete Inspection, Rigorous SOP Benchmark, Empirical Evidence, Actionable Remediation)",
+        "Core Services Bento (Mystery Shopping, CX Audit, SOP Compliance, Multi-Outlet Benchmark, Competitor Intel, Re-Audit)",
+        "Target Industries (F&B/Dining, Luxury Retail, Hospitality, Wellness & Clinics, Automotive, Multi-Outlet Franchises)",
+        "Interactive Sample Report Preview (Dynamic CX score simulator, SOP categories, finding cards with evidence)",
+        "Packages & Transparent Pricing (Starter Single-Audit, Multi-Outlet Pro, Enterprise Continuous Intelligence)",
+        "Testimonials & Case Studies (Verified Director of Operations quotes with quantifiable ROI)",
+        "FAQ Accordion",
+        "Final Executive CTA Banner",
+        "Footer (Legal, Security, Methodology docs, Role Logins)"
+      ]
+    },
+    "client_onboarding_wizard": {
+      "steps_count": 9,
+      "steps": [
+        {"step": 1, "name": "Account Credentials", "icon": "KeyRound"},
+        {"step": 2, "name": "Company Profile", "icon": "Building2"},
+        {"step": 3, "name": "Package Selection", "icon": "PackageCheck"},
+        {"step": 4, "name": "Add-On Modules", "icon": "PlusCircle"},
+        {"step": 5, "name": "Outlet Locations", "icon": "Store"},
+        {"step": 6, "name": "Audit Objectives & Focus", "icon": "Target"},
+        {"step": 7, "name": "SOP & Document Upload", "icon": "UploadCloud"},
+        {"step": 8, "name": "Order Summary & Pricing", "icon": "FileText"},
+        {"step": 9, "name": "Confirmation & Kickoff", "icon": "CheckCircle2"}
+      ]
+    },
+    "client_dashboard": {
+      "primary_views": [
+        "Overview (Summary KPIs, Average CX Score, Severity Breakdown, Recent Audits, Top Remediation Priorities)",
+        "Audits & Visits (List with filter by outlet/date/status, detailed audit timeline, visit evidence)",
+        "Outlets Benchmarking (Multi-outlet score comparison, leaderboards, regional variance)",
+        "Interactive Audit Reports (Full executive report, category breakdown, SOP checklist, photo evidence, PDF exporter)",
+        "Findings & Action Items (Severity matrix: Critical, High, Medium, Low with resolution assignment)",
+        "Recommendations Roadmap (Quick wins vs Strategic shifts, estimated ROI impact)",
+        "Competitor Benchmark (Comparative metrics against sector averages)",
+        "Billing & Invoices (Payment status, package tier, invoice downloads)"
+      ]
+    },
+    "shopper_dashboard_mobile_first": {
+      "form_factor": "Mobile viewport optimized (375px - 430px centered shell with responsive scaling)",
+      "views": [
+        "Home (Available missions, Earnings summary, Active assignment countdown, Guidelines)",
+        "Assignments (Active, Upcoming, Completed with compensation & strict timing rules)",
+        "Audit Questionnaire Form (Categorized questions, Yes/No/Partial switches, Timed photo evidence upload, GPS check-in note, Receipt proof)",
+        "Submissions & QA Status (Draft, Under Review, Approved, Revision Requested)",
+        "Earnings & Wallet (Paid, Pending approval, Payout request)",
+        "Shopper Profile & Verification Badge"
+      ]
+    },
+    "admin_dashboard_desktop_first": {
+      "navigation_density": "High density, sidebar collapsible, quick filter search",
+      "views": [
+        "Admin Cockpit (Action-required items: Pending Shopper approvals, QA Report sign-offs, Disputed visits)",
+        "Projects & Audits Manager (Project dispatch, Assign mystery shoppers, Schedule visits)",
+        "Questionnaire & SOP Template Builder (Custom audit rubrics, weightings, category scoring formulas)",
+        "Shopper Pool & KYC Verification (Background check, reliability score, payout approvals)",
+        "Client Accounts & Outlets (Company directory, multi-branch hierarchies, package allocations)",
+        "Report QA & Publishing Suite (Review shopper submissions, edit recommendations, publish interactive client report)",
+        "Revenue & Billing (Invoices, package sales, platform commission)",
+        "CMS & System Configuration (Manage testimonials, case studies, FAQ, audit logs)"
+      ]
+    },
+    "interactive_audit_report": {
+      "components": [
+        "Executive Header (Brand, Branch, Date, Mystery Shopper ID, Overall CX Score with circular dial)",
+        "CX Scorecard (Overall + 5 Sub-categories: Greeting & First Impression, Staff Knowledge, Service Speed, Cleanliness & SOP, Checkout & Departure)",
+        "Customer Journey Map (Interactive chronological touchpoints with sentiment curve)",
+        "SOP Compliance Checklist (Passed, Deviations, Failure points)",
+        "Key Findings by Severity (Badges: Critical, High, Medium, Low with photographic evidence attachments)",
+        "Consultant Action Plan (Immediate Quick Wins, 30-Day Process Upgrades, 90-Day Training Needs)",
+        "Multi-Outlet Comparison & Competitor Benchmark Index",
+        "Export Module (High-fidelity Print/PDF engine trigger)"
+      ]
+    }
+  },
+  "reusable_components_specifications": {
+    "Button": {
+      "primary": "bg-[#E5A93C] hover:bg-[#D4982B] text-[#06080C] font-semibold tracking-wide rounded-lg shadow-[0_2px_12px_rgba(229,169,60,0.25)] transition-all",
+      "secondary": "bg-[#151B23] hover:bg-[#1F2734] text-slate-100 border border-[#212836] font-medium rounded-lg transition-colors",
+      "outline": "border border-[#E5A93C]/40 text-[#E5A93C] hover:bg-[#E5A93C]/10 rounded-lg font-medium transition-colors",
+      "ghost": "text-slate-400 hover:text-slate-100 hover:bg-slate-800/40 rounded-lg transition-colors"
+    },
+    "StatCard": {
+      "structure": "bg-[#0D1117] border border-[#212836] p-5 rounded-xl flex flex-col justify-between hover:border-[#2E384D] transition-colors",
+      "metric_styling": "text-2xl sm:text-3xl font-bold font-mono text-slate-100 mt-2",
+      "badge_trend": "text-xs font-mono px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+    },
+    "ScoreCard": {
+      "structure": "p-6 rounded-2xl bg-gradient-to-b from-[#151B23] to-[#0D1117] border border-[#212836] relative overflow-hidden",
+      "glow_border": "border-[#E5A93C]/30 shadow-[0_0_20px_rgba(229,169,60,0.08)]",
+      "score_text": "text-4xl font-extrabold font-mono text-[#E5A93C]"
+    },
+    "SeverityBadge": {
+      "critical": "bg-red-500/10 text-red-400 border border-red-500/30 text-xs px-2.5 py-0.5 rounded-full font-semibold",
+      "high": "bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs px-2.5 py-0.5 rounded-full font-semibold",
+      "medium": "bg-sky-500/10 text-sky-300 border border-sky-500/30 text-xs px-2.5 py-0.5 rounded-full font-semibold",
+      "low": "bg-slate-500/10 text-slate-300 border border-slate-500/30 text-xs px-2.5 py-0.5 rounded-full font-semibold"
+    },
+    "Table": {
+      "wrapper": "w-full overflow-x-auto rounded-xl border border-[#212836] bg-[#0D1117]",
+      "header_row": "border-b border-[#212836] bg-[#151B23]/70 text-slate-400 text-xs uppercase tracking-wider font-semibold",
+      "body_row": "border-b border-[#212836]/60 hover:bg-[#151B23]/40 transition-colors text-slate-200 text-sm"
+    },
+    "EmptyState": {
+      "structure": "p-12 text-center flex flex-col items-center justify-center border border-dashed border-[#212836] rounded-xl bg-[#0D1117]/50",
+      "icon_wrapper": "w-12 h-12 rounded-full bg-[#151B23] border border-[#212836] text-[#E5A93C] flex items-center justify-center mb-4"
+    }
+  },
+  "testing_attributes_contract": {
+    "rule": "Every button, input, tab, card, badge, and navigation item MUST include a data-testid attribute in kebab-case",
+    "examples": [
+      "data-testid=\"landing-hero-cta-button\"",
+      "data-testid=\"onboarding-step-next-button\"",
+      "data-testid=\"client-nav-audits-link\"",
+      "data-testid=\"report-download-pdf-button\"",
+      "data-testid=\"shopper-submit-audit-button\"",
+      "data-testid=\"admin-filter-status-select\"",
+      "data-testid=\"score-card-overall-value\""
+    ]
+  },
+  "instructions_to_main_agent": [
+    "1. Keep all source files as .js or .jsx (standard React CRA/craco environment).",
+    "2. Maintain the Deep Charcoal (#06080C, #0D1117, #151B23) and Metallic Golden Yellow (#E5A93C) brand identity for public & executive surfaces.",
+    "3. Provide seamless role switching or direct login options for ADMIN, CLIENT, and MYSTERY SHOPPER with pre-filled demo accounts for frictionless evaluation.",
+    "4. Ensure Shopper Dashboard provides an authentic mobile-first layout (centered device frame or adaptive mobile controls) so secret shoppers can complete audits on phones.",
+    "5. Ensure Admin Dashboard allows rapid review of audits, approval of mystery shoppers, managing packages, and editing reports.",
+    "6. Include the 9-Step Onboarding Wizard with step indicators, package selection, and summary checkout.",
+    "7. Include the interactive CX Audit Report with score breakdowns, SOP failure points, photo evidence, and printable/PDF export capabilities.",
+    "8. Use Lucide icons consistently throughout, avoiding emojis or cartoonish icons.",
+    "9. Always include data-testid on every interactive element."
+  ]
+}
